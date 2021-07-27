@@ -11,6 +11,7 @@ function App() {
   const[pictures,setPictures]=useState([])
   const [searchValue,setSearchValue] = useState("")
   const [page,setpage] = useState(pageNumber)
+  
 
 
  useEffect(() => {
