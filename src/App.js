@@ -4,6 +4,8 @@ import ImageCard from "./ImageCard";
 
 const pageNumber = 1;
 
+// the input box data is store in searchValue
+
 function App() {
   const [pictures, setPictures] = useState([]);
   const [searchValue, setSearchValue] = useState("");
@@ -16,7 +18,7 @@ function App() {
       )
         .then((response) => response.json())
         .then((data) => {
-          setPictures(data.photos.photo);
+          setPictures([...pictures.concat(data.photos.photo)]);
         });
     };
 
@@ -30,21 +32,27 @@ function App() {
   };
   //window.innerHeight + document.documentElement.scrollTop === document.documentElement.offsetHeight
   window.onscroll = function () {
+    
     if (
       window.scrollY + window.innerHeight >=
       document.documentElement.scrollHeight
-    ) {
+    )
+    //console.log("working")
+    {
       scrollToFind();
     }
   };
 
   function updateSearchValue(event) {
+    // console.log(event.target.value)
     setSearchValue(event.target.value);
+    
   }
 
   function search(event) {
     event.preventDefault();
     console.log("searching...");
+   
     let url = `https://www.flickr.com/services/rest/?method=flickr.photos.search&api_key=e58db5c37e31c2add7ff47165e528488&safe_search=1&tags=${searchValue}&format=json&nojsoncallback=1`;
     fetch(url)
       .then((resp) => resp.json())
@@ -54,15 +62,16 @@ function App() {
       });
   }
 
-  //  function loadimages(numImages = 10){
-  //    for(let i = 0;i< numImages;i++){
-  //      fetch(
-  //      "https://www.flickr.com/services/rest/?method=flickr.photos.getRecent&api_key=4c3bbea6f1816a65e5188d6322acc462&format=json&nojsoncallback=1"
-  //    )
-  //    .then((response)=>response.json())
-  //    .then((data)=>{
-  //     setPictures(data.photos.photo);
-  //    }
+  //  const local = localStorage.getItem('names');
+
+  //  let names;
+  //  if(local === null){
+      let names = [];
+  //  }
+
+   names.push(searchValue)
+   localStorage.setItem('names',JSON.stringify(names))
+  
 
   return (
     <div className="App">
@@ -74,6 +83,7 @@ function App() {
               <input
                 type="text"
                 value={searchValue}
+               
                 onChange={updateSearchValue}
               ></input>
             </form>
