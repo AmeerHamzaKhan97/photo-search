@@ -62,12 +62,12 @@ function App() {
       });
   }
 
-  //  const local = localStorage.getItem('names');
+   const local = localStorage.getItem('names');
 
-  //  let names;
-  //  if(local === null){
-      let names = [];
-  //  }
+   let names;
+   if(local === null){
+      let names = [""];
+   }
 
    names.push(searchValue)
    localStorage.setItem('names',JSON.stringify(names))
