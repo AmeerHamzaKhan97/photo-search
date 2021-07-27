@@ -60,17 +60,23 @@ function App() {
         console.log({ data });
         setPictures(data.photos.photo);
       });
+    let names = JSON.parse(localStorage.getItem("names"));
+
+    if (names == null) {
+      names = [];
+    }
+    if (searchValue.length > 0 && !names.includes(searchValue)) {
+      names.push(searchValue);
+      if(names.length>5){
+        names.splice(0,1)
+      }
+      localStorage.setItem("names", JSON.stringify(names));
+    }
   }
 
-   const local = localStorage.getItem('names');
+   
 
-   let names;
-   if(local === null){
-      let names = [""];
-   }
-
-   names.push(searchValue)
-   localStorage.setItem('names',JSON.stringify(names))
+  
   
 
   return (
@@ -93,7 +99,7 @@ function App() {
 
       <div className="my-image">
         {pictures.length > 0 &&
-          pictures.map((img) => <ImageCard image_src={img} key={img.id} />)}
+          pictures.map((img,i) => <ImageCard image_src={img} key={img.id+i} />)}
       </div>
     </div>
   );
