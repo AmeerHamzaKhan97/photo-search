@@ -21,7 +21,7 @@ function App() {
     };
 
 
-    
+
     getAllPhotos();
   }, [page]);
 
