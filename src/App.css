@@ -1,3 +1,11 @@
+li{
+  list-style-type:none;
+}
+
+.App-header{
+  position: relative;
+}
+
 .app-search-section{
   background-color: black;
   height: 120px;
@@ -19,11 +27,19 @@
   margin-top: 10px;
 }
 
-.my-image li{
+/* .my-image img{
   list-style: none;
 
-}
 
+} */
+
+/* .images-list{
+  z-index: -1;
+} */
+
+.my-image{
+  z-index: -3;
+}
 
 
 .my-image{
@@ -31,4 +47,47 @@
   flex-direction: row;
   flex-wrap: wrap;
 }
+
+.dialog {
+  box-shadow: 0 8px 6px -6px black;
+  position: static;
+  left: 20%;
+  top: 10%;
+  
+}
+.normal{
+  width: 400px;
+}
+/* 
+.click{
+ position: absolute;
+  padding-top: 15%;
+}
+   */
+
+
+#query-list {
+  background-color: white;
+  width: 300px;
+  
+  font-size: larger;
+  margin: auto;
+  
+  
+
+
+}
+
+
+/* .dialog {
+  box-shadow: 0 8px 6px -6px black;
+  position: static;
+  left: 20%;
+  top: 10%;
+}
+
+.image {
+  
+
+} */
 
